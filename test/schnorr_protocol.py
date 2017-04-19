@@ -1,6 +1,6 @@
 from cdiagrams.protocol2 import Protocol2
 
-protocol = Protocol2(900, 170)
+protocol = Protocol2(650, 170)
 parties = []
 parties.append("Prover \n at the beginning \n chooses random r from Z_q")
 parties.append("Verifier \n at the end verifies \n that g^y = g^r * (g^s)^c mod p")
