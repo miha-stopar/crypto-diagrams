@@ -7,7 +7,7 @@ A tiny library for quickly drawing cryptograhic protocols and some other cryptog
 ```
 from cdiagrams.protocol2 import Protocol2
 
-protocol = Protocol2(650, 170)
+protocol = Protocol2(850, 170)
 parties = []
 parties.append("Prover \n at the beginning \n chooses random r from Z_q")
 parties.append("Verifier \n at the end verifies \n that g^y = g^r * (g^s)^c mod p")
@@ -18,7 +18,7 @@ connections.append("random c")
 connections.append("y = (r + s*c) % q")
 
 protocol.draw_protocol(parties, connections, box_height=100)
-protocol.save("../img/schnorr_protocol.png"
+protocol.save("../img/schnorr_protocol.png")
 ```
 
 ![schnorr protocol](https://raw.github.com/miha-stopar/crypto-diagrams/master/img/schnorr_protocol.png)
