@@ -2,10 +2,11 @@ from PIL import ImageFont
 from parent import Parent
 
 class Protocol2(Parent):
-    def __init__(self, width, height, font_size=16):
+    def __init__(self, width, height, arrow_offsets = [], font_size=16):
         super(Protocol2, self).__init__(width, height)
         self.x = 20
         self.y = 40
+        self.arrow_offsets = arrow_offsets
         self.font = ImageFont.truetype(self.font_path, font_size)
         
     def _get_connections_length(self, connections):
@@ -29,6 +30,10 @@ class Protocol2(Parent):
         self.draw.rectangle(((self.x + rect1_w + c_length + 20, self.y), 
                              (self.x + rect1_w + c_length + 20 + rect2_w, self.y + box_height)), 
                             outline="black")
+        
+        if self.arrow_offsets == []:
+            for _ in connections:
+                self.arrow_offsets.append(40)
         x = self.x
         y = self.y
         arrow_back = not first_arrow_to_right
@@ -36,8 +41,9 @@ class Protocol2(Parent):
             x_offset = (c_length - lengths[ind]) / 2
             line_w = self.draw_multiline_text(c, x + rect1_w + 10 + x_offset, y + 5, 
                                               move_up_coef=0)
-            self.draw_arrow(x + rect1_w + 10, y, x + rect1_w + 10 + c_length, y, back=arrow_back)
-            y += 40
+            self.draw_arrow(x + rect1_w + 10, y, x + rect1_w + 10 + c_length, 
+                            y, back=arrow_back)
+            y += self.arrow_offsets[ind]
             arrow_back = not arrow_back
         
         
