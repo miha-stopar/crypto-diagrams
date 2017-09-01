@@ -133,4 +133,8 @@ protocol.save("../img/cramer_shoup_security_proof.png")
 
 ## Installation
 
-TBD
+Requirements:
+
+```
+sudo pip install pillow
+```
